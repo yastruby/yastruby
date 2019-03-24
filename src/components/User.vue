@@ -1,7 +1,18 @@
 <template>
   <div class="user">
     <div class="stats">
-        <h2>{{user.name}}</h2>
+        <h2>
+          {{user.name}}
+          <i v-if="parseInt(user.job.split('-')[1]) === 2" class="fas fa-grip-lines-vertical rank"></i>
+          <span v-if="parseInt(user.job.split('-')[1]) === 1" class="fas fa-minus rank-single"> </span>
+        </h2>
+         <div class="general-stats">
+            <span v-if="user.job.split('-')[0]" class="general-stats__element">Діловодство: <strong>{{user.job.split('-')[0]}}</strong></span>
+            <span class="general-stats__element">Рейтинг: <strong>{{user.total}}</strong></span>
+            <span class="general-stats__element">Проба: <strong>{{user.testPassed / 2}}</strong>/<strong>63</strong></span>
+         </div>
+
+
           <div class="stats-element">
              <span>Відвідування</span>
              <span>{{user.presence}}</span>

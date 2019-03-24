@@ -5,7 +5,11 @@
       </div>
       <li v-for="(user, index) in getUsers()" :key="user.id">
           <router-link :to="{ name: 'user', params: { id: user.id }}" class="user-link">
-              <div>{{index + 1}}.{{user.name}}</div>
+              <div>
+                {{index + 1}}.{{user.name}}
+                <i v-if="parseInt(user.job.split('-')[1]) === 2" class="fas fa-grip-lines-vertical rank"></i>
+                <span v-if="parseInt(user.job.split('-')[1]) === 1" class="fas fa-minus rank-single"> </span>
+              </div>
               <div class="total">
                   <div>{{user.total}}</div>
                   <div>

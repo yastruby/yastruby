@@ -41,6 +41,27 @@
   justify-content: center;
 }
 
+.general-stats {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+}
+
+.general-stats__element {
+  padding: 2px;
+}
+
+.rank {
+  color: #C8C8C8;
+}
+
+.rank-single {
+  color: #C8C8C8;
+  transform: rotate(90deg);
+}
+
 .spinner {
   font-size: 50px;
   -webkit-animation: spin 1s infinite linear;
