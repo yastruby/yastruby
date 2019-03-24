@@ -1,14 +1,19 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/">Рейтинг Гуртка Яструби</router-link>
     </div>
-    <router-view/>
+    <div class="content">
+      <router-view/>
+    </div>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,13 +22,44 @@
   color: #2c3e50;
 }
 #nav {
+  background: #42b983;
+  margin-bottom: 30px;
   padding: 30px;
   a {
     font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+    // color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    // &.router-link-exact-active {
+    //   color: white;
+    // }
   }
 }
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  font-size: 50px;
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+  color: #42b983;
+  margin-bottom: 30px;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
 </style>

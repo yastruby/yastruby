@@ -20,6 +20,8 @@ export default {
     justify-content: start;
     flex-direction: column;
     list-style: none;
+    width: 250px;
+
   }
 
   .rating li {
