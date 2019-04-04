@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Рейтинг Гуртка Яструби</router-link>
+      <router-link to="/">Гурток Яструби</router-link>
     </div>
     <div class="content">
       <router-view/>
@@ -69,6 +69,36 @@
   color: #42b983;
   margin-bottom: 30px;
 }
+
+.block {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px;
+  height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+  // background-color: #eee;
+   background: #FFF;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress::-webkit-progress-value {  
+  background: #42b983;
+} 
 
 @-moz-keyframes spin {
     from { -moz-transform: rotate(0deg); }

@@ -25,7 +25,11 @@
          <div class="stats-element">
              <span>Однострій</span>
              <span>{{user.uniform}}</span>
-         </div>         
+         </div>
+        <h3 class="block">Завдання до на ступних сходин</h3>
+         <ul class="task-list">
+             <li v-for="task in getUserTasks">{{task}}</li>
+         </ul>
     </div>
   </div>
 </template>
@@ -43,6 +47,15 @@ export default {
       }
       // return 'User not found'
     },
+
+      getUserTasks: function() {
+          const userId = this.$route.params.id;
+
+          const users = this.$store.getters.getUserById(userId);
+          if (users.length > 0) {
+              return users[0].tasks.split(';');
+          }
+      }
   },
 
   methods: {

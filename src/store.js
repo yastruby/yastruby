@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import getData from './utils/googleApi';
+import {getData} from './utils/googleApi';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     users: [],
-    loading: true
+    loading: true,
+    totalTestsPassed: 0,
+    tests: []
   },
 
   getters: {
@@ -23,6 +25,16 @@ export default new Vuex.Store({
 
     isLoading (state) {
       return state.loading;
+    },
+
+    totalTestPassed (state) {
+      return state.totalTestsPassed;
+    },
+
+    getTestByUserId: (state) => (userId) => {
+      return state.tests.filter((el) => {
+        return el.userId == parseInt(userId);
+      })
     }
   },
 
@@ -37,7 +49,18 @@ export default new Vuex.Store({
     },
 
     fetchUsers (state, payload) {
-      Vue.set(state, 'users', payload)
+      Vue.set(state, 'users', payload);
+    },
+
+    countTotalTestsPassed (state, payload) {
+      const res = state.users.reduce(function(acc, current) {
+        return parseInt(acc) + parseInt(current.testPassed);
+      }, 0);
+      Vue.set(state, 'totalTestsPassed', res);
+    },
+
+    getUserData (state, payload) {
+      Vue.set(state, 'tests', payload)
     }
   },
 
@@ -50,6 +73,10 @@ export default new Vuex.Store({
       context.commit('turnOffLoading');
     },
 
+    countTotalTestsPassed (context) {
+      context.commit('countTotalTestsPassed');
+    },
+
     async fetchUsers ({commit, dispatch}) {
       const fieldsMap = {
         'id': 'id',
@@ -60,11 +87,13 @@ export default new Vuex.Store({
         'однострій': 'uniform',
         'загальна кількість': 'total',
         'вектор': 'vector',
-        'діловодство': 'job'
+        'діловодство': 'job',
+        'завдання до сходин': 'tasks'
       };
 
       dispatch('turnOnLoading')
       const users = await getData();
+      console.log(users)
 
       const mappedUsers = users.map(user => {
         const newUser = {};
@@ -83,6 +112,9 @@ export default new Vuex.Store({
       dispatch('turnOffLoading')
 
       commit('fetchUsers', mappedUsers);
+
+      dispatch('countTotalTestsPassed');
     }
+
   }
 })
