@@ -81,6 +81,10 @@
   align-items: start;
 }
 
+.task-list li {
+/*list-style: none;*/
+}
+
 progress[value] {
   -webkit-appearance: none;
   appearance: none;
