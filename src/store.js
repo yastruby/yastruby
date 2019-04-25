@@ -88,7 +88,7 @@ export default new Vuex.Store({
         'загальна кількість': 'total',
         'вектор': 'vector',
         'діловодство': 'job',
-        'завдання до сходин': 'tasks'
+        'завдання до сходин': 'tasks',
       };
 
       dispatch('turnOnLoading')

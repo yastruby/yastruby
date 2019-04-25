@@ -22,7 +22,7 @@
         </li>
       </div>
       <div>
-        <h3>Проба гуртка: {{getTotalTestsPassed / 2}} / 567</h3>
+        <h3>Проба гуртка: {{getTotalTestsPassed / 2}} / 504</h3>
         <progress max="567" :value="getTotalTestsPassed / 2"></progress>
 
       </div>

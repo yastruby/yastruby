@@ -26,6 +26,10 @@
              <span>Однострій</span>
              <span>{{user.uniform}}</span>
          </div>
+        <div class="stats-element">
+            <span>Вмілості</span>
+            <span>{{user.skills}}</span>
+        </div>
         <h3 class="block">Завдання до наступних сходин</h3>
          <ul class="task-list">
              <li v-for="task in getUserTasks">{{task}}</li>
