@@ -23,7 +23,7 @@
       </div>
       <div>
         <h3>Проба гуртка: {{getTotalTestsPassed / 5}} / {{getUsers().length * 53}}</h3>
-        <progress :max="getUsers().length * 53" :value="getTotalTestsPassed / 2"></progress>
+        <progress :max="getUsers().length * 53" :value="getTotalTestsPassed / 5"></progress>
 
       </div>
   </div>
