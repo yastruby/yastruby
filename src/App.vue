@@ -101,11 +101,12 @@
 .task-list {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  /*align-items: start;*/
+    list-style: none;
 }
 
 .task-list li {
-/*list-style: none;*/
+/*list-style: none;
 }
   .shadow {
     /*-moz-box-shadow:    3px 3px 3px 3px #ccc;*/

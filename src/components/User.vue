@@ -10,10 +10,19 @@
             <span v-if="user.job.split('-')[0]" class="general-stats__element">Діловодство: <strong>{{user.job.split('-')[0]}}</strong></span>
             <span class="general-stats__element">Рейтинг: <strong>{{user.total}}</strong></span>
             <span class="general-stats__element">Проба: <strong>{{user.testPassed / 5}}</strong>/<strong>53</strong></span>
+             <span class="general-stats__element">Кількість вмілостей:
+                 <strong>{{user.skillsList.split(';').filter(el => el.length > 0).length}}</strong>
+             </span>
          </div>
 
+        <h3 class="block">Здані вмілості</h3>
+        <ul class="task-list">
+            <li v-for="skill in user.skillsList.split(';').filter(el => el.length > 0)">{{skill}}</li>
+        </ul>
 
-          <div class="stats-element">
+
+        <h3 class="block">Точкування</h3>
+        <div class="stats-element">
              <span>Відвідування</span>
              <span>{{user.presence}}</span>
          </div>

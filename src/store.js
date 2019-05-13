@@ -108,7 +108,8 @@ export default new Vuex.Store({
         'вектор': 'vector',
         'діловодство': 'job',
         'завдання до сходин': 'tasks',
-        'Налаштування': 'mainConfig'
+        'Налаштування': 'mainConfig',
+        'вмілості_список': 'skillsList'
       };
 
       dispatch('turnOnLoading')
