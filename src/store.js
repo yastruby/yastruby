@@ -9,10 +9,20 @@ export default new Vuex.Store({
     users: [],
     loading: true,
     totalTestsPassed: 0,
-    tests: []
+    tests: [],
+    title: 'Гурток',
+    mainColor: '#d8d8d8e8'
   },
 
   getters: {
+    title (state) {
+      return state.title;
+    },
+
+    getMainColor (state) {
+      return state.mainColor;
+    },
+
     users (state) {
       return state.users;
     },
@@ -39,6 +49,15 @@ export default new Vuex.Store({
   },
 
   mutations: {
+    setMainConfig (state, payload) {
+      const [title, color] = payload.split(';');
+      Vue.set(state, 'title', title);
+      Vue.set(state, 'mainColor', color);
+
+      document.documentElement.style.setProperty("--mainColor", state.mainColor);
+      console.log(state)
+    },
+
     turnOnLoading (state) {
       Vue.set(state, 'loading', true);
     },
@@ -89,32 +108,39 @@ export default new Vuex.Store({
         'вектор': 'vector',
         'діловодство': 'job',
         'завдання до сходин': 'tasks',
+        'Налаштування': 'mainConfig'
       };
 
       dispatch('turnOnLoading')
       const users = await getData();
-      console.log(users)
+      console.log(users);
+
+      let mainConfig;
 
       const mappedUsers = users.map(user => {
         const newUser = {};
         Object.keys(user).map(key => {
+          if (key == 'Налаштування' && user[key].length > 0) mainConfig = user[key];
+
           newUser[fieldsMap[key]] = user[key];
-        })
+        });
         return newUser;
-      })
+      });
 
       mappedUsers.sort(function (a, b) {
         if (parseInt(a.total) > parseInt(b.total)) return -1;
         if (parseInt(a.total) < parseInt(b.total)) return 1;
         return 0;
-      })
+      });
+
 
       dispatch('turnOffLoading')
+
+      commit('setMainConfig', mainConfig);
 
       commit('fetchUsers', mappedUsers);
 
       dispatch('countTotalTestsPassed');
     }
-
   }
 })

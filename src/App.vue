@@ -1,15 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Гурток Яструби</router-link>
-    </div>
+<!--    <div id="nav" class="shadow">-->
+<!--      <router-link to="/">Гурток Яструби</router-link>-->
+<!--    </div>-->
+    <Nav></Nav>
     <div class="content">
       <router-view/>
     </div>
   </div>
 </template>
+<script>
+    import Nav from '@/components/Nav.vue';
+    export default {
+        name: 'App',
+        components: {
+            Nav
+        }
+    }
+</script>
 
 <style lang="scss">
+
+  /*main: #42b983;*/
+  /*$main-color: #42b983;*/
+
+  /*$main-color: #ababab;*/
+  $main-color: var(--mainColor, #42b983);
+  //$default-color :
 * {
   margin: 0;
   padding: 0;
@@ -22,12 +39,17 @@
   color: #2c3e50;
 }
 #nav {
-  background: #42b983;
+  /*background: #42b983;*/
+  /*border: 1px solid #ccc;*/
+  background: $main-color;
   margin-bottom: 30px;
   padding: 30px;
+  color: #0001028a;
   a {
     font-weight: bold;
     // color: #2c3e50;
+    /*color: #0001028a;*/
+
     color: white;
     text-decoration: none;
     // &.router-link-exact-active {
@@ -66,7 +88,8 @@
   font-size: 50px;
   -webkit-animation: spin 1s infinite linear;
   animation: spin 1s infinite linear;
-  color: #42b983;
+  /*color: #42b983;*/
+  color: $main-color;
   margin-bottom: 30px;
 }
 
@@ -84,6 +107,11 @@
 .task-list li {
 /*list-style: none;*/
 }
+  .shadow {
+    /*-moz-box-shadow:    3px 3px 3px 3px #ccc;*/
+    /*-webkit-box-shadow: 3px 3px 3px 3px #ccc;*/
+    /*box-shadow:         2px 3px 1px 1px #ccc;*/
+  }
 
 progress[value] {
   -webkit-appearance: none;
@@ -101,7 +129,8 @@ progress[value]::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {  
-  background: #42b983;
+  /*background: #42b983;*/
+  background: $main-color;
 } 
 
 @-moz-keyframes spin {
