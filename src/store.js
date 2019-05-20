@@ -101,6 +101,7 @@ export default new Vuex.Store({
         'id': 'id',
         'імя': 'name',
         'проба здано': 'testPassed',
+        'проба місяць': 'testCurrent',
         'присутність': 'presence',
         'вмілості': 'skills',
         'однострій': 'uniform',

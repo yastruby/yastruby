@@ -9,7 +9,9 @@
          <div class="general-stats">
             <span v-if="user.job.split('-')[0]" class="general-stats__element">Діловодство: <strong>{{user.job.split('-')[0]}}</strong></span>
             <span class="general-stats__element">Рейтинг: <strong>{{user.total}}</strong></span>
-            <span class="general-stats__element">Проба: <strong>{{user.testPassed / 5}}</strong>/<strong>53</strong></span>
+            <span class="general-stats__element">Проба(загальна): <strong>{{user.testPassed / 5}}</strong>/<strong>53</strong></span>
+             <span class="general-stats__element">Проба(поточний місяць): <strong>{{user.testCurrent / 5}}</strong></span>
+
              <span class="general-stats__element">Кількість вмілостей:
                  <strong>{{user.skillsList.split(';').filter(el => el.length > 0).length}}</strong>
              </span>
@@ -21,14 +23,14 @@
         </ul>
 
 
-        <h3 class="block">Точкування</h3>
+        <h3 class="block">Точкування за поточний місяць</h3>
         <div class="stats-element">
              <span>Відвідування</span>
              <span>{{user.presence}}</span>
          </div>
          <div class="stats-element">
               <span>Проба</span>
-              <span>{{user.testPassed}}</span>
+              <span>{{user.testCurrent}}</span>
               <!-- <progress :value="user.testPassed" max="54" data-label=""></progress> -->
          </div>
          <div class="stats-element">
